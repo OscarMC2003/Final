@@ -1,24 +1,118 @@
-POST http://localhost:3000/api/register HTTP/1.1
+
+//Crear un usuario
+POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "administrador",
-    "email": "admin@admin.com",
-    "password": "HolaMundo.02",
+    "name": "userprueba",
+    "email": "userprueba@userprueba.com",
+    "password": "prueba.1234",
     "edad": 30,
     "ciudad": "Madrid",
     "intereses": ["futbol"],
     "ofertas": true
 }
 
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjFlYWYyMzI2ZDVjNTBhODczZjk1ZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTMyODczMjl9.EHXcEAmlkODP3ElUEKwiFeB893mcTQSipIQqbvq3lH0
 
 ###
-
-POST http://localhost:3000/api/login HTTP/1.1
+//Iniciar cuenta de ususario
+POST http://localhost:3000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "admin@admin.com",
-    "password": "HolaMundo.02"
+    "email": "userprueba@userprueba.com",
+    "password": "prueba.1234"
 }
+
+###
+//Editar un usuario
+PUT http://localhost:3000/api/users/userprueba@userprueba.com HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIxNDc5YTI3MTMwYTUxYzM1MGRjOGYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzQ1NzA1M30.PHgcfhBPhY5TLYhA_rDiOfJlubesUUpHNADvFaBrAis
+
+{
+    "ciudad": "barcelona",
+    "intereses": ["futbol", "tenis"],
+    "ofertas": false
+}
+
+###
+//Usuario puntuando una pagina web (registrado)
+PUT http://localhost:3000/api/users/resena/B12345678
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIxNDc5YTI3MTMwYTUxYzM1MGRjOGYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzQ1NzA1M30.PHgcfhBPhY5TLYhA_rDiOfJlubesUUpHNADvFaBrAis
+    
+    {
+        "scoring": "4",
+        "resenas": "muy mala"
+    }
+###
+
+//Borrar un usuario
+DELETE http://localhost:3000/api/users/userprueba@userprueba.com HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIxNDc5YTI3MTMwYTUxYzM1MGRjOGYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzQ1NzA1M30.PHgcfhBPhY5TLYhA_rDiOfJlubesUUpHNADvFaBrAis
+
+###
+//Crear un comercio
+POST http://localhost:3000/api/merchant HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjFlYWYyMzI2ZDVjNTBhODczZjk1ZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTMzODY5MTJ9.H16rF07akhaaI6FLd1rVb2X0MkxUKnQafa-kFhqvVuA
+
+{
+    "name": "comercio1",
+    "CIF": "B12345678",
+    "direccion": "CalleFalsa123",
+    "email": "bbb@bbb.com",
+    "phone": "123456789",
+    "webpage": null
+}
+
+
+###
+
+//Crar una pagina web para un comercio
+PUT http://localhost:3000/api/merchant/B12345678 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI0ZTcxODI4MjY0NjhlY2JlYjQwY2QiLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJCMTIzNDU2NzgiLCJpYXQiOjE3MTM2OTQ0ODh9.MLbCAmYsXho7uqj0Qp6yhbK3JIc3QAqaa5FFQvC5WsE
+
+{
+    "CIF": "B12345678",
+    "webpage":{
+        "ciudad": "Madrid",
+        "actividad": "comercio",
+        "titulo": "titulo1",
+        "resumen": "resumen1",
+        "textos": ["texto1"],
+        "filename": ["imagen1.jpg"],
+        "scoring":  null,
+        "numeropuntuaciones": null,
+        "resenas": null
+    }
+}
+
+###
+//Borrar un webPage
+DELETE http://localhost:3000/api/merchant/B12345678?delete=webpage HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIwZjc5YjU3NzQwYjkzOWJiNjE1MjIiLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJCMTIzNDU2NzgiLCJpYXQiOjE3MTM0MzY1NzJ9.ef7RYNg_sTL7dUepWQ8yro9DyPNCaLh8E0qFECeE078
+
+###
+//Borrar un usuario merchant
+DELETE http://localhost:3000/api/merchant/B12345678?delete=merchant HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIwZjc5YjU3NzQwYjkzOWJiNjE1MjIiLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJCMTIzNDU2NzgiLCJpYXQiOjE3MTM0MzY1NzJ9.ef7RYNg_sTL7dUepWQ8yro9DyPNCaLh8E0qFECeE078
+
+###
+//Ver un comercio
+GET http://localhost:3000/api/merchant/B12345678 HTTP/1.1
+Content-Type: application/json
+
+###
+//Ver todos los comercios por filtro de ciudad y actividad
+GET http://localhost:3000/api/merchant/?actividad=comercio&ciudad=Madrid&order=asc HTTP/1.1
+Content-Type: application/json
+
+###
+//Ver los usuarios interesados
+GET http://localhost:3000/api/users/?direccion=Madrid&intereses=futbol HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI0ZTcxODI4MjY0NjhlY2JlYjQwY2QiLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJCMTIzNDU2NzgiLCJpYXQiOjE3MTM2OTQ0ODh9.MLbCAmYsXho7uqj0Qp6yhbK3JIc3QAqaa5FFQvC5WsE

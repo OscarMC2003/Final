@@ -1,6 +1,6 @@
 const { handleHttpError } = require("../utils/handleError")
 const { verifyToken } = require("../utils/handleJwt")
-const { userModel } = require("../models")
+const { userModel, merchantModel } = require("../models")
 
 
 
@@ -20,8 +20,23 @@ const authMiddleware = async (req, res, next) => {
         handleHttpError(res, "ERROR_ID_TOKEN", 401)
         return
     }
-    const user = await userModel.findById(dataToken._id)
-    req.user = user // Inyecto al user en la petición
+
+    if(dataToken.role == "merchant"){
+        console.log("Es un comercio")
+        const user = await merchantModel.findById(dataToken._id)
+        req.user = user // Inyecto al merchant en la petición
+    }else if(dataToken.role == "user"){
+        console.log("Es un usuario")
+        const user = await userModel.findById(dataToken._id)
+        req.user = user // Inyecto al user en la petición
+    }else if(dataToken.role == "admin"){
+        console.log("Es un admin")
+        const user = await userModel.findById(dataToken._id)
+        req.user = user // Inyecto al admin en la petición
+    }else{
+        handleHttpError(res, "ERROR_ROLE", 401)
+    }
+    
     next()
     }catch(err){
         handleHttpError(res, "NOT_SESSION", 401)

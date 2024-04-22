@@ -1,7 +1,7 @@
 const { check } = require("express-validator")
 const validateResults = require("../utils/handleValidator")
 
-const validatorCreateItem = [
+const validatorCreateUser = [
     check("name").exists().notEmpty().isString(),
     check("email").exists().notEmpty().isEmail(),
     check("password").exists().notEmpty().isString(),
@@ -12,11 +12,17 @@ const validatorCreateItem = [
     check("role").exists().notEmpty().isIn(["user", "admin"])
 ]
 
-const validatorGetItem = [
-    check("id").exists().notEmpty().isMongoId(),
+const validatorUpdateUser = [
+    check("ciudad").exists().notEmpty().isString(),
+    check("intereses").exists().notEmpty().isArray(),
+    check("ofertas").exists().notEmpty().isBoolean()
+]
+
+const validatorGetUSer = [
+    check("email").exists().notEmpty(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
 ]
 
-module.exports = { validatorCreateItem, validatorGetItem }
+module.exports = { validatorCreateUser, validatorGetUSer, validatorUpdateUser }

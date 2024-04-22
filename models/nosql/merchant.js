@@ -19,6 +19,10 @@ const merchantSchema = new mongoose.Schema(
         phone: {
             type: String
         },
+        role: {
+            type: String,
+            default: "merchant"
+        },
         webpage: {
             ciudad: {
                 type: String
@@ -27,7 +31,8 @@ const merchantSchema = new mongoose.Schema(
                 type: String
             },
             titulo: {
-                type: String
+                type: String,
+                unique: true 
             },
             resumen: {
                 type: String
@@ -39,14 +44,19 @@ const merchantSchema = new mongoose.Schema(
                 type: [String]
             },
             scoring: {
-                type: [Number]
+                type: [String]
             },
             numeropuntuaciones: {
-                type: Number
+                type: Number,
+                default: 0
             },
             resenas: {
                 type: [String]
-            } 
+            },
+            promedio: {
+                type: Number,
+                default: 0 
+            }
         }
     },
     {

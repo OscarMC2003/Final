@@ -8,8 +8,23 @@ const tokenSign = async (user) => {
     const sign = jwt.sign(
         {
             _id: user._id,
-            role: user.role
-            //meter cosas que me interesan en el token
+            role: user.role,
+            email: user.email
+        },
+        process.env.JWT_SECRET,
+        {
+            //expiresIn: "2h"
+        }
+    )
+    return sign
+}
+
+const tokenSignMerch = async (user) => {
+    const sign = jwt.sign(
+        {
+            _id: user._id,
+            role: user.role,
+            CIF: user.CIF,
         },
         process.env.JWT_SECRET,
         {
@@ -31,4 +46,4 @@ const verifyToken = async (tokenJwt) => {
     }
 }
 
-module.exports = { tokenSign, verifyToken }
+module.exports = { tokenSign, verifyToken, tokenSignMerch }
