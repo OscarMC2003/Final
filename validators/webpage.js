@@ -7,7 +7,7 @@ const validatorCreateWebPage= [
     check("webpage.titulo").exists().notEmpty().isString(),
     check("webpage.resumen").exists().notEmpty().isString(),
     check("webpage.textos").exists().notEmpty().isArray(),
-    check("webpage.filename").exists().notEmpty().isArray(),
+    check("webpage.filename").exists().notEmpty().isString(),
     check("webpage.numeropuntuaciones").exists().isEmpty().isNumeric(),
     check("webpage.scoring").exists().isEmpty().isArray(),
     check("webpage.resenas").exists().isEmpty().isArray(),

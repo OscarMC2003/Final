@@ -181,6 +181,20 @@ const deleteMerchant = async (req, res) => {
     }
   };
 
+  const updateFoto = async (req, res) => {
+    try {
+        console.log(req)
+        const CIF = req.params.CIF
+        const file = req.file
+        console.log(file)
+        const data = await merchantModel.findOneAndUpdate({CIF:CIF}, {$set:{"webpage.filename":file.filename}})
+        res.send(data)
+    }catch(err){
+        console.log(err)
+        handleHttpError(res, 'ERROR_UPDATE_ITEMS_STORAGE')
+    }
+}
 
 
-module.exports = { getItems, getItem, createItem, updateItem, deleteMerchant, addReview, busquedaProfunda }
+
+module.exports = { getItems, getItem, createItem, updateItem, deleteMerchant, addReview, busquedaProfunda, updateFoto }

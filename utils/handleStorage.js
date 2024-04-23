@@ -1,10 +1,8 @@
-const express = require("express")
-const router = express.Router();
-
 const multer = require("multer")
+
 const storage = multer.diskStorage({
     destination:function(req, file, callback){ //Pasan argumentos automáticamente
-        const pathStorage = __dirname+"/../storage"
+        const pathStorage = __dirname+"/../storage" //Se llevaría a S3 de AWS por ejemplo
         callback(null, pathStorage) //error y destination
     },
     filename:function(req, file, callback){ //Sobreescribimos o renombramos
@@ -14,6 +12,7 @@ const storage = multer.diskStorage({
         callback(null, filename)
     }
 })
+//Middleware en la ruta y el controlador
+const uploadMiddleware = multer({storage})
 
-const uploadMiddleware = multer({storage}) //Middleware entre la ruta y el controlador
-module.exports = uploadMiddleware;
+module.exports = uploadMiddleware

@@ -41,7 +41,8 @@ const merchantSchema = new mongoose.Schema(
                 type: [String]
             },
             filename: {
-                type: [String]
+                type: String,
+                default: "default.jpg"
             },
             scoring: {
                 type: [String]

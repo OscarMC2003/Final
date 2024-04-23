@@ -3,12 +3,13 @@ const router = express.Router()
 const checkRol = require("../middleware/rol")
 
 
-const { getItems, getItem, createItem, updateItem, deleteMerchant, busquedaProfunda, getInteresados } = require("../controllers/merchant")
+const { getItems, getItem, createItem, updateItem, deleteMerchant, busquedaProfunda, updateFoto } = require("../controllers/merchant")
 const { validatorCreateMerchant, validatorGetMerchant } = require("../validators/merchant")
 const { validatorCreateWebPage, validatorGetWebPage } = require("../validators/webpage")
 //const customHeader = require("../middleware/customHeader")
 const authMiddleware = require("../middleware/session")
 const IscorrectCIF = require("../middleware/CIF")
+const uploadMiddleware = require("../utils/handleStorage")
 
 
 //Obtener merchant por cif
@@ -21,5 +22,7 @@ router.post("/", authMiddleware, checkRol(["admin"]), validatorCreateMerchant, c
 router.put("/:CIF",authMiddleware, IscorrectCIF, validatorGetWebPage, validatorCreateWebPage, updateItem)
 //Eliminar Webpage o merchant
 router.delete("/:CIF", validatorGetWebPage, IscorrectCIF, deleteMerchant )
+//Meter foto a comercio
+router.put("/upload/:CIF", authMiddleware, IscorrectCIF, uploadMiddleware.single("file"), updateFoto)
 
 module.exports = router
