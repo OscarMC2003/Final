@@ -28,7 +28,7 @@ Content-Type: application/json
 //Editar un usuario
 PUT http://localhost:3000/api/users/userprueba@userprueba.com HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIxNDc5YTI3MTMwYTUxYzM1MGRjOGYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzQ1NzA1M30.PHgcfhBPhY5TLYhA_rDiOfJlubesUUpHNADvFaBrAis
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MmZlNWJhMThhMTM4MDhhNjM2YmUiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzk3NTI3OX0.NM5YJzh5XcmQ71R0fGUuaDC174v7ISiFprnVt9BhmZU
 
 {
     "ciudad": "barcelona",
@@ -40,7 +40,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIxNDc5Y
 //Usuario puntuando una pagina web (registrado)
 PUT http://localhost:3000/api/users/resena/B12345678
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjIxNDc5YTI3MTMwYTUxYzM1MGRjOGYiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzQ1NzA1M30.PHgcfhBPhY5TLYhA_rDiOfJlubesUUpHNADvFaBrAis
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI5MmZlNWJhMThhMTM4MDhhNjM2YmUiLCJyb2xlIjoidXNlciIsImVtYWlsIjoidXNlcnBydWViYUB1c2VycHJ1ZWJhLmNvbSIsImlhdCI6MTcxMzk3NTI3OX0.NM5YJzh5XcmQ71R0fGUuaDC174v7ISiFprnVt9BhmZU
     
     {
         "scoring": "4",
@@ -77,7 +77,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI0ZTcxODI4MjY0NjhlY2JlYjQwY2QiLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJCMTIzNDU2NzgiLCJpYXQiOjE3MTM2OTQ0ODh9.MLbCAmYsXho7uqj0Qp6yhbK3JIc3QAqaa5FFQvC5WsE
 
 {
-    "CIF": "B12345678",
+    "CIF": "B123456789",
     "webpage":{
         "ciudad": "Madrid",
         "actividad": "comercio",

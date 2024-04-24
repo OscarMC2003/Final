@@ -16,7 +16,7 @@ const router = express.Router()
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: "#/components/schemas/user"
+ *                      $ref: "#/components/schemas/createUser"
  *      responses:
  *          '200':
  *              description: Returns the inserted object
@@ -24,7 +24,25 @@ const router = express.Router()
  *              description: Validation error
  */
 router.post("/register", validatorRegister, registerCtrl)
-
+/**
+ * @openapi
+ * /api/auth/login:
+ *  post:
+ *      tags:
+ *      - RegisterUser
+ *      summary: User login
+ *      description: Login with the user
+ *      requestBody:
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/login"
+ *      responses:
+ *          '200':
+ *              description: Returns the inserted object
+ *          '401':
+ *              description: Validation error // No exist user // Unauthorized
+ */
 router.post("/login", validatorLogin, loginCtrl) 
 
 

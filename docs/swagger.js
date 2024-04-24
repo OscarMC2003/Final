@@ -4,7 +4,7 @@ const options = {
     definition: {
       openapi: "3.0.3",
       info: {
-        title: "Tracks - Express API with Swagger (OpenAPI 3.0)",
+        title: "ComerceWeb",
         version: "0.1.0",
         description:
           "This is a CRUD API application made with Express and documented with Swagger",
@@ -140,6 +140,48 @@ const options = {
                     phone: {
                         type: "string",
                         example: "123456789"
+                    },
+                },
+            },
+            createWebPage: {
+                type: "object",
+                required: ["CIF", "webpage.ciudad", "webpage.actividad", "webpage.titulo", "webpage.resumen", "webpage.textos", "webpage.filename"],
+                properties: {
+                    CIF: {
+                        type: "string",
+                        example: "12345678A"
+                    },
+                    webpage: {
+                        type: "object",
+                        properties: {
+                            ciudad: {
+                                type: "string",
+                                example: "Madrid"
+                            },
+                            actividad: {
+                                type: "string",
+                                example: "Deportes"
+                            },
+                            titulo: {
+                                type: "string",
+                                example: "Deportes Menganito"
+                            },
+                            resumen: {
+                                type: "string",
+                                example: "Resumen de la web"
+                            },
+                            textos: {
+                                type: "array",
+                                items: {
+                                    type: "string"
+                                },
+                                example: ["Texto 1", "Texto 2"]
+                            },
+                            filename: {
+                                type: "string",
+                                example: "default.jpg"
+                            },
+                        },
                     },
                 },
             },

@@ -1,4 +1,5 @@
 const { handleHttpError } = require("../utils/handleError")
+const jwt = require('jsonwebtoken');
 
 const IscorrectEmail = (req, res, next) => {
     try{
@@ -15,12 +16,13 @@ const IscorrectEmail = (req, res, next) => {
         console.log("Token: " + useremail)
 
         if(/*CIFBody !== comerceCif &&*/ emailUrl !== useremail){
-            handleHttpError(res, "CIF_NOT_EMAIL", 403)
+            handleHttpError(res, "NOT_EMAIL", 403)
             return
         }
 
         next()
     }catch(err){
+        console.log(err)
         handleHttpError(res, "ERROR_EMAIL", 403)
     }
 }
