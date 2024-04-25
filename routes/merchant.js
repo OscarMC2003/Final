@@ -31,7 +31,7 @@ const uploadMiddleware = require("../utils/handleStorage")
  *              description: Validation error
  */
 //Obtener merchant por cif
-router.get("/:CIF", getItem)
+router.get("/:CIF",authMiddleware, checkRol(["admin"]), getItem)
 
 /**
  * @openapi
@@ -140,5 +140,22 @@ router.delete("/:CIF", validatorGetWebPage, IscorrectCIF, deleteMerchant )
 
 //Meter foto a comercio
 router.put("/upload/:CIF", authMiddleware, IscorrectCIF, uploadMiddleware.single("file"), updateFoto)
+
+/**
+ * @openapi
+ * /api/merchant/:
+ *  get:
+ *      tags:
+ *      - GetMerchants
+ *      summary: show all merchants  
+ *      description: return all merchants
+ *      responses:
+ *          '200':
+ *              description: Returns the inserted object
+ *          '401':
+ *              description: Validation error
+ */
+//Obtener todos los comercios
+router.get("/todosLosComercios", authMiddleware, checkRol(["admin"]), getItems)
 
 module.exports = router

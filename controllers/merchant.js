@@ -14,6 +14,7 @@ const { encrypt, compare } = require("../utils/handlePassword")
 
 const getItems = async (req, res) => {
     try{
+        console.log("entra en getItems")
         const data = await merchantModel.find({})
         res.send(data)
     }catch (err){
