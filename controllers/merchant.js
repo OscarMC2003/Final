@@ -8,7 +8,6 @@ const { merchantModel } = require("../models")
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
 const { tokenSignMerch } = require("../utils/handleJwt")
-const { encrypt, compare } = require("../utils/handlePassword")
 
 
 
@@ -116,6 +115,7 @@ const updateItem = async (req, res) => {
         console.log(data)
         res.send(data)
     }catch(err){
+        console.log(err)
         handleHttpError(res, 'ERROR_UPDATE_ITEMS_MERCHANTS')
     }
 }

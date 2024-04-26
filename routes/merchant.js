@@ -156,6 +156,6 @@ router.put("/upload/:CIF", authMiddleware, IscorrectCIF, uploadMiddleware.single
  *              description: Validation error
  */
 //Obtener todos los comercios
-router.get("/todosLosComercios", authMiddleware, checkRol(["admin"]), getItems)
+router.get("/todosLosComercios/prueba", authMiddleware, checkRol(["admin"]), getItems)
 
 module.exports = router

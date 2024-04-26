@@ -26,10 +26,10 @@ const checkRol = (roles) => (req, res, next) => { // Doble argumento
         const userRol = decodedToken.role // Extrae el cif del token
         console.log("Token: " + userRol)
         if (!roles.includes(userRol)) {
-        handleHttpError(res, "NOT_ALLOWED", 403)
-        return
-    }
-    next()
+            handleHttpError(res, "NOT_ALLOWED", 403)
+            return
+        }
+        next()
     }catch(err){
         console.log(err)
         handleHttpError(res, "ERROR_PERMISSIONS", 403)

@@ -72,16 +72,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjFlYWYyM
 ###
 
 //Crar una pagina web para un comercio
-PUT http://localhost:3000/api/merchant/B12345678 HTTP/1.1
+PUT http://localhost:3000/api/merchant/C12345678 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJhOThjY2M1OTIwNmQzODM4M2NkY2MiLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJDMTIzNDU2NzgiLCJpYXQiOjE3MTQwNjc2NjB9.Hn3B_DWiQgSBbrZPHucjqygjua_SmsDtxjf4x3dL-Fk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzJlZTY0YjQ1M2I3NGFhZGQ2MzciLCJyb2xlIjoibWVyY2hhbnQiLCJDSUYiOiJDMTIzNDU2NzgiLCJpYXQiOjE3MTQxMjM1MDJ9.60UV4OCGQfUgPpQk426Xlwz-PnIwWjNKt2zdCEpETAo
 
 {
-    "CIF": "B123456789",
+    "CIF": "C12345678",
     "webpage":{
         "ciudad": "Madrid",
         "actividad": "comercio",
-        "titulo": "titulo1",
+        "titulo": "titulo2",
         "resumen": "resumen1",
         "textos": ["texto1"],
         "filename": "",
@@ -137,7 +137,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjI0ZTcxO
 
 ###
 //Ver todos los comercios (solo puede el admin)
-GET http://localhost:3000/api/merchant/todosLosComercios HTTP/1.1
+GET http://localhost:3000/api/merchant/todosLosComercios/prueba HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjFlYWYyMzI2ZDVjNTBhODczZjk1ZGQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTMzODY5MTJ9.H16rF07akhaaI6FLd1rVb2X0MkxUKnQafa-kFhqvVuA
 
